@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import PersonalInfo from "./views/PersonalInfo";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      userInfo: {
+        id: "ID",
+        name: "Name",
+        age: 20,
+        position: "Position",
+        company: "Company",
+        technology: "Technology",
+        hobby: "Hobby",
+      },
+    };
+
+    this.onUpdatePersonalInfo = this.onUpdatePersonalInfo.bind(this);
+  }
+
+  onUpdatePersonalInfo(newInfo) {
+    this.setState({ userInfo: newInfo });
+  }
+
+  render() {
+    return (
+      <div>
+        <PersonalInfo
+          userInfo={this.state.userInfo}
+          onSubmitUpdate={(values) => this.onUpdatePersonalInfo(values)}
+        />
+      </div>
+    );
+  }
 }
 
 export default App;
