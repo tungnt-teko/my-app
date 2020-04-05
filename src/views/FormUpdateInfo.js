@@ -1,26 +1,6 @@
 import React, { Component } from "react";
-import { Form, Input, InputNumber, Button } from "antd";
-
-const layout = {
-  labelCol: {
-    span: 4,
-  },
-  wrapperCol: {
-    span: 10,
-  },
-};
-const tailLayout = {
-  wrapperCol: {
-    offset: 8,
-    span: 16,
-  },
-};
-const validateMessages = {
-  required: "${label} is required!",
-  types: {
-    number: "${label} is not a validate number!",
-  },
-};
+import { Form, Input, InputNumber, Button, Row } from "antd";
+import { layout, validateMessages } from "./config";
 
 class FormUpdateInfo extends Component {
   constructor(props) {
@@ -78,13 +58,15 @@ class FormUpdateInfo extends Component {
             <Input />
           </Form.Item>
           <Form.Item label="Hobby" name="hobby" rules={[{ required: true }]}>
-            <Input.TextArea />
+            <Input.TextArea rows={4} />
           </Form.Item>
-          <Form.Item {...tailLayout}>
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-          </Form.Item>
+          <Row justify="center">
+            <Form.Item>
+              <Button type="primary" htmlType="submit">
+                Submit
+              </Button>
+            </Form.Item>
+          </Row>
         </Form>
       </div>
     );

@@ -1,15 +1,7 @@
 import React, { Component } from "react";
-import { Form, Button } from "antd";
+import { Form, Button, Row, PageHeader } from "antd";
 import FormUpdateInfo from "./FormUpdateInfo";
-
-const layout = {
-  labelCol: {
-    span: 4,
-  },
-  wrapperCol: {
-    span: 10,
-  },
-};
+import { layout } from "./config";
 
 class PersonalInfo extends Component {
   constructor(props) {
@@ -50,15 +42,24 @@ class PersonalInfo extends Component {
   render() {
     return (
       <div>
-        {!this.state.isUpdateInfo ? (
-          <Button type="primary" onClick={this.onClickEdit}>
-            Edit
-          </Button>
-        ) : (
-          <Button type="default" danger onClick={this.onClickCancel}>
-            Cancel
-          </Button>
-        )}
+        <Row justify="center" style={{ marginBottom: 8 }}>
+          <PageHeader
+            className="site-page-header-responsive"
+            title="Personal Information"
+          />
+        </Row>
+
+        <Row justify="center" gutter={[10, 25]}>
+          {!this.state.isUpdateInfo ? (
+            <Button type="primary" onClick={this.onClickEdit}>
+              Edit
+            </Button>
+          ) : (
+            <Button type="default" danger onClick={this.onClickCancel}>
+              Cancel
+            </Button>
+          )}
+        </Row>
 
         {!this.state.isUpdateInfo ? (
           <Form title="User Information" {...layout}>
